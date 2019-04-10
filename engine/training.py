@@ -1627,12 +1627,14 @@ class Model(Container):
                              'you should specify the `steps_per_epoch` '
                              'argument.')
         # Validate user data.
+        print('Validate user data')
         x, y, sample_weights = self._standardize_user_data(
             x, y,
             sample_weight=sample_weight,
             class_weight=class_weight,
             batch_size=batch_size)
         # Prepare validation data.
+        print('Prepare validation data')
         do_validation = False
         if validation_data:
             do_validation = True
@@ -1679,6 +1681,7 @@ class Model(Container):
                 val_ins = [0.]
 
         # Prepare input arrays and training function.
+        print('Prepare input arrays and training function')
         if self.uses_learning_phase and not isinstance(K.learning_phase(), int):
             ins = x + y + sample_weights + [1.]
         else:
@@ -1687,6 +1690,7 @@ class Model(Container):
         f = self.train_function
 
         # Prepare display labels.
+        print('Prepare display labels')
         out_labels = self.metrics_names
 
         if do_validation:
@@ -1699,6 +1703,7 @@ class Model(Container):
             val_ins = []
 
         # Delegate logic to `_fit_loop`.
+        print('Delegate logic to '_fit_loop')
         return self._fit_loop(f, ins, out_labels=out_labels,
                               batch_size=batch_size, epochs=epochs,
                               verbose=verbose, callbacks=callbacks,
