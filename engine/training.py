@@ -1703,7 +1703,7 @@ class Model(Container):
             val_ins = []
 
         # Delegate logic to `_fit_loop`.
-        print('Delegate logic to '_fit_loop')
+        print('Delegate logic to _fit_loop')
         return self._fit_loop(f, ins, out_labels=out_labels,
                               batch_size=batch_size, epochs=epochs,
                               verbose=verbose, callbacks=callbacks,
